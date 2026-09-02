@@ -1,0 +1,89 @@
+1bike.wav
+велосипед1bike.wav
+boat.wav
+лодкаboat.wav
+1bus.wav
+автобус1bus.wav
+car.wav
+машинаcar.wav
+carriage.wav
+вагонcarriage.wav
+helicopter.wav
+вертолетhelicopter.wav
+motor.wav
+двигательmotor.wav
+motorbike.wav
+мотоциклmotorbike.wav
+sail.wav
+парусsail.wav
+scooter.wav
+самокатscooter.wav
+ship.wav
+корабльship.wav
+taxi.wav
+таксиtaxi.wav
+tram.wav
+трамвайtram.wav
+trolleybus.wav
+тролейбусtrolleybus.wav
+truck.wav
+грузовикtruck.wav
+accelerate.wav
+ускорятьaccelerate.wav
+brake.wav
+тормозbrake.wav
+defect.wav
+неисправностьdefect.wav
+drive.wav
+водитьdrive.wav
+headlight.wav
+фараheadlight.wav
+pedal.wav
+педальpedal.wav
+repair.wav
+ремонтироватьrepair.wav
+seat.wav
+сиденьеseat.wav
+speed.wav
+скоростьspeed.wav
+steer.wav
+рулитьsteer.wav
+tire.wav
+шинаtire.wav
+turn around.wav
+развернутьсяturn around.wav
+turn.wav
+поворачиватьturn.wav
+wheel.wav
+колесоwheel.wav
+accident.wav
+аварияaccident.wav
+address.wav
+адресaddress.wav
+direction.wav
+направлениеdirection.wav
+drop off.wav
+высаживатьdrop off.wav
+glass.wav
+стеклоglass.wav
+insurance.wav
+страховкаinsurance.wav
+map.wav
+картаmap.wav
+navigate.wav
+перемещатьсяnavigate.wav
+parking.wav
+парковкаparking.wav
+passenger.wav
+пассажирpassenger.wav
+pick up.wav
+забратьpick up.wav
+sign.wav
+знакsign.wav
+traffic light.wav
+светофорtraffic light.wav
+transmission.wav
+коробка передачtransmission.wav
+trunk.wav
+багажникtrunk.wav
+stopread

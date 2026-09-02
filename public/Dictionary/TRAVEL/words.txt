@@ -1,0 +1,101 @@
+flight.wav
+hotel.wav
+travel.wav
+trip.wav
+vacation.wav
+гостиницаhotel.wav
+отпускvacation.wav
+поездкаtrip.wav
+полетflight.wav
+путешествоватьtravel.wav
+airport.wav
+аэропортairport.wav
+climb.wav
+взбиратьсяclimb.wav
+price.wav
+ценаprice.wav
+shop.wav
+магазинshop.wav
+tourist.wav
+туристtourist.wav
+guide.wav
+проводникguide.wav
+include.wav
+включатьinclude.wav
+shower.wav
+душshower.wav
+sunburn.wav
+загарsunburn.wav
+transfer.wav
+перемещениеtransfer.wav
+attractions.wav
+достопримечательностиattractions.wav
+hostel.wav
+общежитиеhostel.wav
+landmark.wav
+ориентирlandmark.wav
+camp.wav
+лагерьcamp.wav
+route.wav
+маршрут (путь)route.wav
+suitcase.wav
+чемоданsuitcase.wav
+train.wav
+поездtrain.wav
+adventure.wav
+приключениеadventure.wav
+backpack.wav
+рюкзакbackpack.wav
+map.wav
+картаmap.wav
+explore.wav
+исследоватьexplore.wav
+currency.wav
+валютаcurrency.wav
+check in.wav
+регистрироватьсяcheck in.wav
+customs.wav
+таможняcustoms.wav
+hostess.wav
+хозяйкаhostess.wav
+plane.wav
+самолетplane.wav
+ticket.wav
+билетticket.wav
+arrival.wav
+прибытиеarrival.wav
+beach.wav
+пляжbeach.wav
+boarding.wav
+посадкаboarding.wav
+check out.wav
+выселитьсяcheck out .wav
+departure.wav
+отправлениеdeparture.wav
+tour.wav
+турtour.wav
+vacation.wav
+отпускvacation.wav
+itinerary.wav
+маршрут (пункты)itinerary.wav
+reservation.wav
+бронированиеreservation.wav
+luggage.wav
+багажluggage.wav
+accomodation.wav
+размещениеaccomodation.wav
+land in.wav
+приземлитьсяland in.wav
+room.wav
+комнатаroom.wav
+book.wav
+заказыватьbook.wav
+take off.wav
+взлететьtake off.wav
+connection.wav
+соединениеconnection.wav
+package.wav
+упаковкаpackage.wav
+rent.wav
+арендоватьrent.wav
+stopread
