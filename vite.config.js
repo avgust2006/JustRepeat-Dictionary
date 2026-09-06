@@ -3,6 +3,11 @@ import { defineConfig, transformWithOxc } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    // Эта машина блокирует IPv6-loopback (localhost -> [::1]),
+    // поэтому всегда слушаем IPv4.
+    host: '127.0.0.1',
+  },
   plugins: [
     {
       name: 'js-jsx-transform',

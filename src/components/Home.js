@@ -6,10 +6,10 @@ import BrandLogo from './BrandLogo';
 
 const paperData = [
   { title: 'VERBS', route: '/dict-work-window' },
-  { title: 'VERBS+', route: '/dict-work-window' },
   { title: 'ADJECTIVES', route: '/dict-work-window' },
   { title: 'PREPOSITIONS and ADVERBS', route: '/dict-work-window' },
   { title: 'PRONOUNS and CONJUNCTIONS', route: '/dict-work-window' },
+  { title: 'VERBS+', route: '/dict-work-window' },
   { title: 'BODY', route: '/dict-work-window' },
   { title: 'EDUCATION', route: '/dict-work-window' },
   { title: 'JOB', route: '/dict-work-window' },
