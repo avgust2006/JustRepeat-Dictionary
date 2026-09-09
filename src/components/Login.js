@@ -1,7 +1,71 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import TelegramIcon from '@mui/icons-material/Telegram';
-import { Box, Button, Container, Link, Typography } from '@mui/material';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import BoltIcon from '@mui/icons-material/Bolt';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import RepeatIcon from '@mui/icons-material/Repeat';
+import TranslateIcon from '@mui/icons-material/Translate';
+import {
+  Box,
+  Button,
+  Chip,
+  Container,
+  Divider,
+  Link,
+  Stack,
+  Typography,
+} from '@mui/material';
+
+const colors = {
+  ink: '#123B4D',
+  muted: '#426273',
+  cream: '#F8F3EA',
+  paper: 'rgba(255, 252, 246, 0.8)',
+  sand: '#E9D5B0',
+  gold: '#C78F45',
+  teal: '#116A7B',
+};
+
+const featureItems = [
+  {
+    icon: <BoltIcon />,
+    title: 'Быстрый темп',
+    description: 'За занятие вы проходите много слов, не задерживаясь на каждом.',
+  },
+  {
+    icon: <RepeatIcon />,
+    title: 'Повторение работает',
+    description: 'Регулярная практика закрепляет слова в памяти естественно.',
+  },
+  {
+    icon: <AutoAwesomeIcon />,
+    title: 'Видимый результат',
+    description: 'Через месяц занятий 5 раз в неделю слова вспоминаются мгновенно.',
+  },
+];
+
+const steps = [
+  {
+    number: '01',
+    icon: <PlayArrowRoundedIcon />,
+    title: 'Вспомни',
+    description: 'Нажми START. Увидишь английское слово, произнеси его вслух. Вспомни перевод.',
+  },
+  {
+    number: '02',
+    icon: <TranslateIcon />,
+    title: 'Проверь',
+    description: 'Нажми TRANSLATE и проверь себя. Повтори английское слово вслух.',
+  },
+  {
+    number: '03',
+    icon: <CheckCircleIcon />,
+    title: 'Повтори',
+    description: 'Нажми NEXT и переходи дальше. Не задерживайся на одном слове.',
+  },
+];
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,195 +74,319 @@ const Login = () => {
     <Box
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(180deg, #f4efe7 0%, #d8cdb6 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        py: { xs: 3, md: 5 },
+        background: `
+          radial-gradient(circle at 8% 8%, rgba(199, 143, 69, 0.2), transparent 28%),
+          radial-gradient(circle at 92% 88%, rgba(17, 106, 123, 0.11), transparent 32%),
+          linear-gradient(145deg, #F7F0E5 0%, #E9DDC9 100%)
+        `,
+        color: colors.ink,
+        py: { xs: 2, md: 5 },
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Box
           sx={{
-            maxWidth: 920,
+            maxWidth: 1120,
             mx: 'auto',
-            background: 'rgba(255, 255, 255, 0.28)',
-            border: '1px solid rgba(17, 106, 123, 0.14)',
-            borderRadius: 5,
-            boxShadow: '0 24px 60px rgba(17, 106, 123, 0.12)',
-            backdropFilter: 'blur(2px)',
-            p: { xs: 3, md: 4 },
+            px: { xs: 2, sm: 4, md: 6 },
+            py: { xs: 3, md: 5 },
+            border: '1px solid rgba(255, 255, 255, 0.72)',
+            borderRadius: { xs: 4, md: 6 },
+            backgroundColor: colors.paper,
+            boxShadow: '0 26px 70px rgba(18, 59, 77, 0.14)',
+            backdropFilter: 'blur(12px)',
           }}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+          <Stack
+            direction={{ xs: 'column', md: 'row' }}
+            alignItems={{ xs: 'flex-start', md: 'center' }}
+            justifyContent="space-between"
+            spacing={2}
+            sx={{ mb: { xs: 5, md: 7 } }}
+          >
+            <Stack direction="row" alignItems="center" spacing={1.5}>
+              <Box
+                sx={{
+                  width: 46,
+                  height: 46,
+                  display: 'grid',
+                  placeItems: 'center',
+                  borderRadius: 2.5,
+                  background: `linear-gradient(135deg, ${colors.teal}, #1F5B71)`,
+                  color: colors.cream,
+                  fontWeight: 800,
+                  letterSpacing: '-0.08em',
+                  boxShadow: '0 8px 18px rgba(17, 106, 123, 0.2)',
+                }}
+              >
+                JR
+              </Box>
+              <Typography sx={{ fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.03em' }}>
+                Just Repeat
+              </Typography>
+            </Stack>
+            <Chip
+              icon={<AutoAwesomeIcon sx={{ fontSize: '1rem !important' }} />}
+              label="Метод для тех, кто хочет получить результат"
+              sx={{
+                color: colors.teal,
+                backgroundColor: 'rgba(17, 106, 123, 0.08)',
+                fontWeight: 700,
+                '& .MuiChip-icon': { color: colors.gold },
+              }}
+            />
+          </Stack>
+
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '1.05fr 0.95fr' },
+              gap: { xs: 4, md: 8 },
+              alignItems: 'center',
+              mb: { xs: 6, md: 8 },
+            }}
+          >
+            <Box>
+              <Typography
+                component="p"
+                sx={{
+                  mb: 2,
+                  color: colors.gold,
+                  fontSize: '0.76rem',
+                  fontWeight: 800,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Тренажёр словарного запаса
+              </Typography>
+              <Typography
+                component="h1"
+                sx={{
+                  maxWidth: 650,
+                  mb: 2.5,
+                  color: colors.ink,
+                  fontSize: { xs: '2.55rem', sm: '3.6rem', md: '4.25rem' },
+                  fontWeight: 800,
+                  lineHeight: 0.98,
+                  letterSpacing: '-0.065em',
+                }}
+              >
+                Повторяйте слова.
+                <Box component="span" sx={{ display: 'block', color: colors.teal }}>
+                  Не зубрите их.
+                </Box>
+              </Typography>
+              <Typography
+                sx={{
+                  maxWidth: 580,
+                  mb: 3.5,
+                  color: colors.muted,
+                  fontSize: { xs: '1.05rem', md: '1.16rem' },
+                  lineHeight: 1.7,
+                }}
+              >
+               Уникальный метод запоминания Just Repeat — это сочетание быстрого темпа и обязательного повторения.
+                Регулярные занятия помогут уже через месяц мгновенно вспоминать пройденные
+                 слова — без долгих пауз и мучительных поисков в памяти.
+
+              </Typography>
+              <Button
+                type="button"
+                onClick={() => navigate('/home')}
+                variant="contained"
+                endIcon={<PlayArrowRoundedIcon />}
+                sx={{
+                  minWidth: { xs: '100%', sm: 220 },
+                  height: 58,
+                  px: 3,
+                  borderRadius: 2.5,
+                  background: `linear-gradient(135deg, ${colors.teal} 0%, #1F5B71 100%)`,
+                  color: colors.cream,
+                  fontSize: '1rem',
+                  fontWeight: 800,
+                  textTransform: 'none',
+                  boxShadow: '0 14px 24px rgba(17, 106, 123, 0.22)',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #0E5D6E 0%, #174B60 100%)',
+                    boxShadow: '0 16px 28px rgba(17, 106, 123, 0.28)',
+                  },
+                }}
+              >
+                Начать занятие
+              </Button>
+            </Box>
+
             <Box
               sx={{
-                width: 72,
-                height: 72,
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'linear-gradient(135deg, #116A7B 0%, #0F8596 100%)',
-                color: '#F8F4ED',
-                fontSize: '2rem',
-                fontWeight: 700,
-                letterSpacing: '-0.08em',
-                boxShadow: '0 12px 24px rgba(17, 106, 123, 0.18)',
+                position: 'relative',
+                overflow: 'hidden',
+                p: { xs: 2.5, sm: 3.5 },
+                borderRadius: 4,
+                background: `linear-gradient(145deg, ${colors.ink} 0%, #1F5B71 100%)`,
+                color: colors.cream,
+                boxShadow: '0 20px 40px rgba(18, 59, 77, 0.2)',
+                '&:after': {
+                  content: '""',
+                  position: 'absolute',
+                  width: 180,
+                  height: 180,
+                  right: -70,
+                  bottom: -90,
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(199, 143, 69, 0.35)',
+                },
               }}
             >
-              JR
+              <Typography
+                sx={{
+                  position: 'relative',
+                  zIndex: 1,
+                  mb: 3,
+                  color: '#F2D7AA',
+                  fontSize: '0.74rem',
+                  fontWeight: 800,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Почему это работает
+              </Typography>
+              <Stack spacing={2.5} sx={{ position: 'relative', zIndex: 1 }}>
+                {featureItems.map((item) => (
+                  <Stack key={item.title} direction="row" spacing={1.75} alignItems="flex-start">
+                    <Box
+                      sx={{
+                        flexShrink: 0,
+                        width: 38,
+                        height: 38,
+                        display: 'grid',
+                        placeItems: 'center',
+                        borderRadius: 2,
+                        backgroundColor: 'rgba(242, 215, 170, 0.16)',
+                        color: '#F2D7AA',
+                      }}
+                    >
+                      {item.icon}
+                    </Box>
+                    <Box>
+                      <Typography sx={{ mb: 0.3, fontWeight: 800 }}>{item.title}</Typography>
+                      <Typography sx={{ color: 'rgba(248, 243, 234, 0.76)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                        {item.description}
+                      </Typography>
+                    </Box>
+                  </Stack>
+                ))}
+              </Stack>
             </Box>
           </Box>
 
-          <Typography
-            variant="h2"
-            align="center"
-            sx={{
-              color: '#116A7B',
-              fontWeight: 500,
-              letterSpacing: '-0.06em',
-              fontSize: { xs: '2.5rem', md: '4rem' },
-              mb: 4,
-            }}
-          >
-            Just Repeat
-          </Typography>
-
-          <Box
-            sx={{
-              background: 'rgba(17, 106, 123, 0.06)',
-              border: '1px solid rgba(17, 106, 123, 0.08)',
-              borderRadius: 3,
-              p: { xs: 2.5, md: 3 },
-              mb: 4,
-            }}
-          >
+          <Box sx={{ mb: { xs: 5, md: 6 } }}>
             <Typography
-              variant="h4"
+              component="h2"
               sx={{
-                color: '#116A7B',
-                fontWeight: 700,
-                mb: 2,
-                letterSpacing: '-0.03em',
-              }}
-            >
-              САЙТ-ТРЕНАЖЕР ДЛЯ БЫСТРОГО ЗАПОМИНАНИЯ СЛОВ
-            </Typography>
-
-            <Typography
-              variant="h6"
-              sx={{
-                color: '#116A7B',
-                fontWeight: 700,
                 mb: 1,
-                letterSpacing: '-0.02em',
+                color: colors.ink,
+                fontSize: { xs: '1.7rem', md: '2.15rem' },
+                fontWeight: 800,
+                letterSpacing: '-0.045em',
               }}
             >
-              Dictionary
+              Простая схема эффективного занятия
             </Typography>
-
-            <Typography
+            <Typography sx={{ mb: 3.5, color: colors.muted, lineHeight: 1.6 }}>
+              Не пытайтесь запоминать — дайте повторениям сделать свою работу.
+            </Typography>
+            <Box
               sx={{
-                color: '#1B4F5B',
-                fontSize: '1.03rem',
-                lineHeight: 1.8,
-                textIndent: '2.2rem',
-                mb: 2,
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+                gap: 2,
               }}
             >
-              Этот метод запоминания слов уникален тем, что за одно занятие вы проходите сразу большое
-              количество слов в быстром темпе. Благодаря повторению слова закрепляются в памяти автоматически,
-              без длительного и утомительного заучивания. Словарный запас начинает расти очень быстро.
-            </Typography>
-
-            <Typography
-              sx={{
-                color: '#1B4F5B',
-                fontSize: '1.03rem',
-                lineHeight: 1.8,
-                textIndent: '2.2rem',
-                mb: 2,
-              }}
-            >
-              Нажмите кнопку START, и перед вами появится слово. Если слово на русском языке и его перевод вам знаком,
-              то произнесите перевод слова вслух и только после этого нажмите кнопку TRANSLATE.
-              Если вы не можете вспомнить перевод, то нажмите кнопку TRANSLATE и повторите появившееся слово вслух.
-              При переводе с английского на русский, обязательно повторяйте слово на английском языке вслух.
-            </Typography>
-
-            <Typography
-              sx={{
-                color: '#1B4F5B',
-                fontSize: '1.03rem',
-                lineHeight: 1.8,
-                textIndent: '2.2rem',
-                mb: 2,
-              }}
-            >
-              Не задерживайтесь долго на одном слове. Для перехода к следующему слову нажмите кнопку NEXT. За одно
-              занятие проходите 2–4 темы. Когда вы выучите 70–80% слов в одной теме, можно заменить её на новую и
-              продолжать работать с 2–4 темами на следующем занятии. Регулярность занятий важнее объёма.
-              Занимайтесь 5 раз в неделю — и уже через месяц ваш словарный запас заметно вырастет.
-            </Typography>
+              {steps.map((step) => (
+                <Box
+                  key={step.number}
+                  sx={{
+                    p: 2.5,
+                    border: '1px solid rgba(18, 59, 77, 0.1)',
+                    borderRadius: 3,
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                  }}
+                >
+                  <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 2 }}>
+                    <Box sx={{ color: colors.teal }}>{step.icon}</Box>
+                    <Typography sx={{ color: colors.gold, fontSize: '0.8rem', fontWeight: 800 }}>
+                      {step.number}
+                    </Typography>
+                  </Stack>
+                  <Typography sx={{ mb: 0.7, color: colors.ink, fontWeight: 800 }}>{step.title}</Typography>
+                  <Typography sx={{ color: colors.muted, fontSize: '0.93rem', lineHeight: 1.55 }}>
+                    {step.description}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
           </Box>
 
-          <Button
-            type="button"
-            onClick={() => navigate('/home')}
-            fullWidth
-            variant="contained"
-            sx={{
-              height: 60,
-              borderRadius: 2.5,
-              background: 'linear-gradient(135deg, #116A7B 0%, #0E7D90 100%)',
-              color: '#F8F4ED',
-              fontSize: '1.1rem',
-              fontWeight: 700,
-              letterSpacing: '0.02em',
-              textTransform: 'none',
-              boxShadow: '0 16px 26px rgba(17, 106, 123, 0.18)',
-              '&:hover': {
-                background: 'linear-gradient(135deg, #0F5D6E 0%, #0A7385 100%)',
-              },
-            }}
-          >
-            Начать
-          </Button>
-
           <Box
             sx={{
-              mt: 4,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 1,
-              flexWrap: 'wrap',
-              color: '#116A7B',
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '1.2fr 0.8fr' },
+              gap: 2,
+              p: { xs: 2.5, md: 3 },
+              borderRadius: 3,
+              backgroundColor: 'rgba(199, 143, 69, 0.12)',
+              border: '1px solid rgba(199, 143, 69, 0.2)',
             }}
           >
-            <Typography variant="body2" sx={{ color: '#116A7B' }}>
+            <Box>
+              <Typography sx={{ mb: 0.8, color: colors.ink, fontWeight: 800 }}>
+                Ритм важнее объёма
+              </Typography>
+              <Typography sx={{ color: colors.muted, lineHeight: 1.6 }}>
+                За занятие проходите 2–4 темы. Когда освоите 70–80% слов, замените одну тему на новую.
+              </Typography>
+            </Box>
+            <Box sx={{ borderLeft: { md: '1px solid rgba(18, 59, 77, 0.16)' }, pl: { md: 3 } }}>
+              <Typography sx={{ mb: 0.8, color: colors.teal, fontSize: '1.35rem', fontWeight: 800 }}>
+                5 раз в неделю
+              </Typography>
+              <Typography sx={{ color: colors.muted, lineHeight: 1.6 }}>
+                Через месяц вы почувствуете, насколько быстрее вспоминаются слова.
+              </Typography>
+            </Box>
+          </Box>
+
+          <Divider sx={{ mt: { xs: 5, md: 6 }, mb: 2.5, borderColor: 'rgba(18, 59, 77, 0.12)' }} />
+          <Stack direction={{ xs: 'column', sm: 'row' }} alignItems="center" justifyContent="space-between" spacing={1.5}>
+            <Typography variant="body2" sx={{ color: colors.muted, textAlign: 'center' }}>
               Copyright © 2024 Valerii Demidov. All rights reserved.
             </Typography>
             <Link
               href="https://t.me/avgust_2006"
               target="_blank"
               rel="noreferrer"
+              aria-label="Just Repeat в Telegram"
               sx={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: 28,
-                height: 28,
+                width: 34,
+                height: 34,
                 borderRadius: '50%',
-                backgroundColor: 'rgba(17, 106, 123, 0.08)',
-                color: '#116A7B',
-                '&:hover': { backgroundColor: 'rgba(17, 106, 123, 0.14)' },
+                backgroundColor: 'rgba(17, 106, 123, 0.1)',
+                color: colors.teal,
+                transition: 'transform 160ms ease, background-color 160ms ease',
+                '&:hover': {
+                  backgroundColor: 'rgba(17, 106, 123, 0.18)',
+                  transform: 'translateY(-2px)',
+                },
               }}
             >
               <TelegramIcon fontSize="small" />
             </Link>
-          </Box>
+          </Stack>
         </Box>
       </Container>
     </Box>
