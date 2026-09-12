@@ -359,34 +359,14 @@ const Login = () => {
           </Box>
 
           <Divider sx={{ mt: { xs: 5, md: 6 }, mb: 2.5, borderColor: 'rgba(18, 59, 77, 0.12)' }} />
-          <Stack direction={{ xs: 'column', sm: 'row' }} alignItems="center" justifyContent="space-between" spacing={1.5}>
+          <Box direction={{ xs: 'column', sm: 'row' }} alignItems="center" justifyContent="space-between" spacing={1.5}>
             <Typography variant="body2" sx={{ color: colors.muted, textAlign: 'center' }}>
-              Copyright © 2024 Valerii Demidov. All rights reserved.
+              © {new Date().getFullYear()} Just Repeat. Все права защищены. По вопросам технической поддержки и оплаты:{' '}
+              <Link color="inherit" href="mailto:support.justrepeat@gmail.com" sx={{ fontWeight: 'bold' }}>
+                support.justrepeat@gmail.com
+              </Link>
             </Typography>
-            <Link
-              href="https://t.me/avgust_2006"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Just Repeat в Telegram"
-              sx={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 34,
-                height: 34,
-                borderRadius: '50%',
-                backgroundColor: 'rgba(17, 106, 123, 0.1)',
-                color: colors.teal,
-                transition: 'transform 160ms ease, background-color 160ms ease',
-                '&:hover': {
-                  backgroundColor: 'rgba(17, 106, 123, 0.18)',
-                  transform: 'translateY(-2px)',
-                },
-              }}
-            >
-              <TelegramIcon fontSize="small" />
-            </Link>
-          </Stack>
+          </Box>
         </Box>
       </Container>
     </Box>
