@@ -17,7 +17,8 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import BrandLogo from './BrandLogo';
+import BrandLogo from './BrandLogo.js';
+import tokens from '../theme/tokens.js';
 
 const PRICE_PER_TITLE = 50;
 const PURCHASED_TITLES_KEY = 'justrepeat.purchasedDictionaryTitles';
@@ -29,38 +30,27 @@ const FREE_TITLES = new Set([
 ]);
 
 const paperData = [
-  { title: 'VERBS', route: '/dict-work-window', isFree: true },
-  { title: 'ADJECTIVES', route: '/dict-work-window', isFree: true },
-  { title: 'PRONOUNS and CONJUNCTIONS', route: '/dict-work-window', isFree: true },
-  { title: 'COMMON PHRASES', route: '/dict-work-window', isFree: true },
-  { title: 'VERBS+', route: '/dict-work-window' },
-  { title: 'BODY', route: '/dict-work-window' },
-  { title: 'EDUCATION', route: '/dict-work-window' },
-  { title: 'JOB', route: '/dict-work-window' },
-  { title: 'SPORT', route: '/dict-work-window' },
-  { title: 'FAMILY', route: '/dict-work-window' },
-  { title: 'MONEY', route: '/dict-work-window' },
-  { title: 'TRAVEL', route: '/dict-work-window' },
-  { title: 'HOUSE', route: '/dict-work-window' },
-  { title: 'FOOD', route: '/dict-work-window' },
-  { title: 'TRANSPORT', route: '/dict-work-window' },
-  { title: 'CLOTHES', route: '/dict-work-window' },
-  { title: 'PREPOSITIONS and ADVERBS', route: '/dict-work-window' },
-  { title: 'NATURE', route: '/dict-work-window' },
-  { title: 'DATE and NUMBERS', route: '/dict-work-window' },
-  { title: 'HEALTH', route: '/dict-work-window' },
+  { title: 'VERBS', isFree: true },
+  { title: 'ADJECTIVES', isFree: true },
+  { title: 'PRONOUNS and CONJUNCTIONS', isFree: true },
+  { title: 'COMMON PHRASES', isFree: true },
+  { title: 'VERBS+' },
+  { title: 'BODY' },
+  { title: 'EDUCATION' },
+  { title: 'JOB' },
+  { title: 'SPORT' },
+  { title: 'FAMILY' },
+  { title: 'MONEY' },
+  { title: 'TRAVEL' },
+  { title: 'HOUSE' },
+  { title: 'FOOD' },
+  { title: 'TRANSPORT' },
+  { title: 'CLOTHES' },
+  { title: 'PREPOSITIONS and ADVERBS' },
+  { title: 'NATURE' },
+  { title: 'DATE and NUMBERS' },
+  { title: 'HEALTH' },
 ];
-
-const CSSIcon = styled(IconButton)({
-  '&:hover': {
-    backgroundColor: '#ECE5C7',
-  },
-  width: '25px',
-  height: '25px',
-  position: 'absolute',
-  right: '5px',
-  top: '4px',
-});
 
 const CSSPaper = styled(Paper)({
   height: '100%',
@@ -71,22 +61,26 @@ const CSSPaper = styled(Paper)({
   cursor: 'pointer',
   padding: '14px 12px',
   textAlign: 'center',
-  background: 'linear-gradient(135deg, #d7b585 0%, #f3e4ca 100%)',
-  color: '#123b4d',
-  borderRadius: '16px',
-  border: '1px solid rgba(18,59,77,0.08)',
-  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+  background: tokens.colors.background.paperGradient,
+  color: tokens.colors.primary.main,
+  borderRadius: tokens.radii.xl,
+  border: `1px solid ${tokens.colors.border.subtle}`,
+  transition: 'transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease',
   width: '100%',
   boxSizing: 'border-box',
   position: 'relative',
   overflow: 'hidden',
   whiteSpace: 'normal',
-  wordBreak: 'normal',
-  overflowWrap: 'normal',
+  wordBreak: 'break-word',
+  overflowWrap: 'break-word',
   '&:hover': {
-    background: 'linear-gradient(135deg, #e9d5b0 0%, #f9f0dd 100%)',
+    background: tokens.colors.background.paperGradientHover,
     transform: 'translateY(-2px)',
-    boxShadow: '0 12px 24px rgba(18,59,77,0.12)',
+    boxShadow: tokens.shadows.button,
+  },
+  '&:focus-visible': {
+    outline: tokens.interactive.focusVisibleOutline,
+    outlineOffset: tokens.interactive.focusVisibleOffset,
   },
 });
 
@@ -122,13 +116,12 @@ const Home = () => {
     }
 
     const verifyEndpoint = import.meta.env.VITE_YOOKASSA_VERIFY_ENDPOINT;
-    if (!verifyEndpoint) {
-      setPaymentError('Платеж получен, но проверка ЮKassa еще не настроена.');
-      return;
-    }
-
     let isCancelled = false;
     const verifyPayment = async () => {
+      if (!verifyEndpoint) {
+        setPaymentError('Платеж получен, но проверка ЮKassa еще не настроена.');
+        return;
+      }
       setIsLoadingPayment(true);
       try {
         const response = await fetch(verifyEndpoint, {
@@ -146,7 +139,7 @@ const Home = () => {
         if (!isCancelled) {
           rememberPurchase(title);
           window.history.replaceState({}, '', '/home');
-          navigate('/dict-work-window', { state: { title } });
+          navigate(`/dict-work-window/${encodeURIComponent(title)}`, { state: { title } });
         }
       } catch (error) {
         console.error('Unable to verify ЮKassa payment:', error);
@@ -167,13 +160,14 @@ const Home = () => {
   }, [navigate, rememberPurchase]);
 
   const handlePaperClick = (paper) => {
+    const targetRoute = `/dict-work-window/${encodeURIComponent(paper.title)}`;
     if (paper.isFree || FREE_TITLES.has(paper.title)) {
-      navigate(paper.route, { state: { title: paper.title } });
+      navigate(targetRoute, { state: { title: paper.title } });
       return;
     }
 
     if (purchasedTitles.has(paper.title)) {
-      navigate(paper.route, { state: { title: paper.title } });
+      navigate(targetRoute, { state: { title: paper.title } });
       return;
     }
 
@@ -230,69 +224,76 @@ const Home = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ pb: 2 }}>
+    <Container maxWidth="md" sx={{ pb: 3, px: { xs: 2, sm: 3 } }}>
       <Box
         sx={{
-          marginTop: 10,
-          background: 'linear-gradient(90deg, #123b4d 0%, #1f5b71 100%)',
+          marginTop: { xs: 4, sm: 6, md: 10 },
+          background: tokens.colors.background.headerGradient,
           marginBottom: 1,
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          position: 'relative',
-          borderRadius: '18px 18px 0 0',
-          px: 1,
-          boxShadow: '0 18px 30px rgba(18,59,77,0.14)',
-          overflow: 'hidden',
+          borderRadius: `${tokens.radii.card}px ${tokens.radii.card}px 0 0`,
+          px: { xs: 1.5, sm: 2 },
+          py: 1.25,
+          minHeight: 56,
+          boxShadow: tokens.shadows.xl,
         }}
       >
         <Box
           sx={{
-            position: 'absolute',
-            left: 12,
-            top: '50%',
-            transform: 'translateY(-50%)',
-            width: 44,
-            height: 34,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            overflow: 'hidden',
-            zIndex: 1,
+            flexShrink: 0,
           }}
         >
           <BrandLogo compact dark />
         </Box>
 
         <Typography
-          gutterBottom
           variant="body1"
           sx={{
-            mx: 'auto',
-            mt: '7px',
-            color: 'primary.contrastText',
-            fontSize: '14px',
+            color: tokens.colors.primary.contrastText,
+            fontSize: { xs: '13px', sm: '14px' },
             letterSpacing: 1.4,
-            fontWeight: 700,
+            fontWeight: tokens.typography.weights.bold,
+            textAlign: 'center',
+            flex: 1,
+            px: 1,
           }}
         >
           DICTIONARY
         </Typography>
 
-        <CSSIcon aria-label="return" onClick={IconButtonReturnClick} sx={{ color: 'primary.main', bgcolor: 'secondary.main' }}>
-          <ArrowBackIcon />
-        </CSSIcon>
+        <IconButton
+          aria-label="Вернуться на главную"
+          onClick={IconButtonReturnClick}
+          sx={{
+            color: tokens.colors.primary.main,
+            bgcolor: tokens.colors.accent.main,
+            width: 32,
+            height: 32,
+            flexShrink: 0,
+            '&:hover': {
+              bgcolor: tokens.colors.accent.sandLight,
+            },
+          }}
+        >
+          <ArrowBackIcon fontSize="small" />
+        </IconButton>
       </Box>
 
       <Box
         sx={{
-          bgcolor: 'rgba(255,255,255,0.74)',
+          bgcolor: tokens.colors.background.paperGlass,
           marginBottom: 1,
-          pb: 2,
-          px: { xs: 1.5, md: 2 },
-          borderRadius: '0 0 18px 18px',
-          boxShadow: '0 18px 30px rgba(18,59,77,0.08)',
+          pb: 2.5,
+          pt: 2,
+          px: { xs: 1.5, sm: 2 },
+          borderRadius: `0 0 ${tokens.radii.card}px ${tokens.radii.card}px`,
+          boxShadow: tokens.shadows.lg,
         }}
       >
         <Grid container spacing={2} sx={{ alignItems: 'stretch' }}>
@@ -308,15 +309,17 @@ const Home = () => {
               <CSSPaper
                 elevation={2}
                 onClick={() => handlePaperClick(paper)}
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                tabIndex={0}
+                role="button"
+                aria-label={`Раздел словаря: ${paper.title}${paper.isFree ? ' (бесплатно)' : ''}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handlePaperClick(paper);
+                  }
                 }}
               >
-                {!paper.isFree && (
+                {!paper.isFree && !purchasedTitles.has(paper.title) && (
                   <LockOutlinedIcon
                     aria-label="Платный раздел"
                     sx={{ position: 'absolute', top: 8, right: 8, fontSize: 18, opacity: 0.7 }}
@@ -327,12 +330,12 @@ const Home = () => {
                   component="div"
                   sx={{
                     fontSize: { xs: '0.92rem', sm: '1rem', md: '1.05rem' },
-                    lineHeight: 1.2,
-                    fontWeight: 700,
+                    lineHeight: 1.25,
+                    fontWeight: tokens.typography.weights.bold,
                     maxWidth: '100%',
                     whiteSpace: 'normal',
-                    wordBreak: 'normal',
-                    overflowWrap: 'normal',
+                    wordBreak: 'break-word',
+                    overflowWrap: 'break-word',
                     textAlign: 'center',
                   }}
                 >
@@ -344,23 +347,38 @@ const Home = () => {
         </Grid>
       </Box>
       {paymentError && !payment && <Alert severity="info" sx={{ mt: 2 }}>{paymentError}</Alert>}
-      <Dialog open={Boolean(payment)} onClose={() => !isLoadingPayment && setPayment(null)} maxWidth="xs" fullWidth>
-        <DialogTitle>Доступ к разделу</DialogTitle>
+      <Dialog
+        open={Boolean(payment)}
+        onClose={() => !isLoadingPayment && setPayment(null)}
+        maxWidth="xs"
+        fullWidth
+        aria-labelledby="payment-dialog-title"
+      >
+        <DialogTitle id="payment-dialog-title">Доступ к разделу</DialogTitle>
         <DialogContent>
           <Typography>
             Доступ к разделу «{payment?.title}» навсегда
           </Typography>
-          <Typography variant="h5" sx={{ mt: 1, fontWeight: 800 }}>
+          <Typography variant="h5" sx={{ mt: 1, fontWeight: tokens.typography.weights.extraBold, color: tokens.colors.primary.main }}>
             Итого: {payment?.total} ₽
           </Typography>
           {paymentError && <Alert severity="info" sx={{ mt: 2 }}>{paymentError}</Alert>}
         </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setPayment(null)} disabled={isLoadingPayment}>Отмена</Button>
+        <DialogActions sx={{ px: 3, pb: 2 }}>
+          <Button onClick={() => setPayment(null)} disabled={isLoadingPayment}>
+            Отмена
+          </Button>
           <Button
             variant="contained"
             onClick={handlePayment}
             disabled={isLoadingPayment || !payment}
+            sx={{
+              background: tokens.colors.background.tealGradient,
+              color: tokens.colors.text.inverse,
+              '&:hover': {
+                background: tokens.colors.background.tealGradientHover,
+              },
+            }}
           >
             Оплатить через ЮKassa
           </Button>

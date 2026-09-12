@@ -4,72 +4,89 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import Login from './components/Login.js';
 import Home from './components/Home.js';
 import DictWorkWindow from './components/DictWorkWindow.js';
+import tokens from './theme/tokens.js';
 
 const theme = createTheme({
+  breakpoints: tokens.breakpoints,
   palette: {
     primary: {
-      main: '#123b4d',
-      dark: '#0a2736',
-      light: '#2d5b70',
-      contrastText: '#f9f4ef',
+      main: tokens.colors.primary.main,
+      dark: tokens.colors.primary.dark,
+      light: tokens.colors.primary.light,
+      contrastText: tokens.colors.primary.contrastText,
     },
     secondary: {
-      main: '#d7b585',
-      light: '#f3e4ca',
-      contrastText: '#123b4d',
+      main: tokens.colors.accent.main,
+      light: tokens.colors.accent.sandLight,
+      contrastText: tokens.colors.accent.contrastText,
     },
     background: {
-      default: '#f5efe7',
-      paper: '#fffdf9',
+      default: tokens.colors.background.default,
+      paper: tokens.colors.background.paper,
     },
     text: {
-      primary: '#1d2f3c',
-      secondary: '#4d6875',
+      primary: tokens.colors.text.primary,
+      secondary: tokens.colors.text.secondary,
     },
   },
   typography: {
-    fontFamily: '"Inter", "Segoe UI", sans-serif',
-    h1: { fontWeight: 800, letterSpacing: '-0.04em' },
-    h2: { fontWeight: 800, letterSpacing: '-0.04em' },
-    h3: { fontWeight: 700, letterSpacing: '-0.03em' },
-    h4: { fontWeight: 700, letterSpacing: '-0.02em' },
-    h5: { fontWeight: 600 },
-    h6: { fontWeight: 600 },
-    body1: { lineHeight: 1.7 },
-    body2: { lineHeight: 1.6 },
+    fontFamily: tokens.typography.fontFamily,
+    h1: { fontWeight: tokens.typography.weights.extraBold, letterSpacing: tokens.typography.letterSpacings.tight },
+    h2: { fontWeight: tokens.typography.weights.extraBold, letterSpacing: tokens.typography.letterSpacings.tight },
+    h3: { fontWeight: tokens.typography.weights.bold, letterSpacing: '-0.03em' },
+    h4: { fontWeight: tokens.typography.weights.bold, letterSpacing: '-0.02em' },
+    h5: { fontWeight: tokens.typography.weights.semibold },
+    h6: { fontWeight: tokens.typography.weights.semibold },
+    body1: { lineHeight: tokens.typography.lineHeights.relaxed },
+    body2: { lineHeight: tokens.typography.lineHeights.normal },
   },
-  shape: { borderRadius: 20 },
+  shape: { borderRadius: tokens.radii.cardLg },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          background: 'radial-gradient(circle at top, rgba(215,181,133,0.26), transparent 30%), linear-gradient(180deg, #f7f3ed 0%, #f0eadf 100%)',
+          background: tokens.colors.background.bodyGradient,
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
+          borderRadius: tokens.radii.md,
           textTransform: 'none',
-          fontWeight: 700,
+          fontWeight: tokens.typography.weights.bold,
           boxShadow: 'none',
           letterSpacing: '0.01em',
+          minHeight: tokens.interactive.minTouchTarget,
+          '&:focus-visible': {
+            outline: tokens.interactive.focusVisibleOutline,
+            outlineOffset: tokens.interactive.focusVisibleOffset,
+          },
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          '&:focus-visible': {
+            outline: tokens.interactive.focusVisibleOutline,
+            outlineOffset: tokens.interactive.focusVisibleOffset,
+          },
         },
       },
     },
     MuiPaper: {
       styleOverrides: {
         root: {
-          border: '1px solid rgba(18,59,77,0.08)',
+          border: `1px solid ${tokens.colors.border.subtle}`,
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          boxShadow: '0 20px 32px rgba(18, 59, 77, 0.08)',
-          border: '1px solid rgba(18, 59, 77, 0.08)',
+          boxShadow: tokens.shadows.card,
+          border: `1px solid ${tokens.colors.border.subtle}`,
         },
       },
     },
@@ -91,6 +108,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/dict-work-window/:title" element={<DictWorkWindow />} />
           <Route path="/dict-work-window" element={<DictWorkWindow />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
