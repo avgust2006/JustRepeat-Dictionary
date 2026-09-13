@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import BrandLogo from './BrandLogo.js';
+import BrandLogo from './BrandLogo.jsx';
 import tokens from '../theme/tokens.js';
 
 const PRICE_PER_TITLE = 50;

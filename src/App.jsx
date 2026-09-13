@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
-import Login from './components/Login.js';
-import Home from './components/Home.js';
-import DictWorkWindow from './components/DictWorkWindow.js';
+import Login from './components/Login.jsx';
+import Home from './components/Home.jsx';
+import DictWorkWindow from './components/DictWorkWindow.jsx';
 import tokens from './theme/tokens.js';
 
 const theme = createTheme({

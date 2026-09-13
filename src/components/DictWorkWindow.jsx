@@ -21,7 +21,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import ReplayIcon from '@mui/icons-material/Replay';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import BrandLogo from './BrandLogo.js';
+import BrandLogo from './BrandLogo.jsx';
 import tokens from '../theme/tokens.js';
 
 const CssBut = styled(Button)({
@@ -460,14 +460,14 @@ const DictWorkWindow = () => {
           <Box sx={{ width: '100%' }}>
             {/* Visible Progress Bar and Word counter */}
             <Box sx={{ width: '100%', mb: 3, px: { xs: 0.5, sm: 1 } }}>
-              <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 1 }}>
+              <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 1, gap: '2ch', flexWrap: 'wrap' }}>
                 <Typography sx={{ fontWeight: tokens.typography.weights.extraBold, fontSize: '0.92rem', color: tokens.colors.primary.main }}>
                   {sessionStatus === 'completed'
                     ? `Завершено! Все ${totalCount} слов пройдены`
                     : `Слово ${currentWordDisplayNumber} из ${totalCount}`}
                 </Typography>
-                <Typography sx={{ fontWeight: tokens.typography.weights.bold, fontSize: '0.92rem', color: tokens.colors.teal.main }}>
-                  {progressPercent}%
+                <Typography sx={{ fontWeight: tokens.typography.weights.bold, fontSize: '0.92rem', color: tokens.colors.primary.main }}>
+                  процентов выполнено: {progressPercent}%
                 </Typography>
               </Stack>
               <LinearProgress
