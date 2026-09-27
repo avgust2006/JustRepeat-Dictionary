@@ -437,7 +437,7 @@ const DictWorkWindow = () => {
               Тема: {title}
             </Typography>
             <Typography sx={{ mb: 3, color: tokens.colors.text.secondary, fontSize: '1rem' }}>
-              В этом словаре доступно слов для повторения: <strong>{totalCount}</strong>
+              В этом словаре доступно слов для повторения: <strong>{totalCount/2}</strong>
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
               <PrimaryActionBtn
@@ -463,8 +463,8 @@ const DictWorkWindow = () => {
               <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 1, gap: '2ch', flexWrap: 'wrap' }}>
                 <Typography sx={{ fontWeight: tokens.typography.weights.extraBold, fontSize: '0.92rem', color: tokens.colors.primary.main }}>
                   {sessionStatus === 'completed'
-                    ? `Завершено! Все ${totalCount} слов пройдены`
-                    : `Слово ${currentWordDisplayNumber} из ${totalCount}`}
+                    ? `Завершено! Все ${totalCount/2} слов пройдены`
+                    : `Карточка ${currentWordDisplayNumber} из ${totalCount}`}
                 </Typography>
                 <Typography sx={{ fontWeight: tokens.typography.weights.bold, fontSize: '0.92rem', color: tokens.colors.primary.main }}>
                   процентов выполнено: {progressPercent}%
@@ -633,7 +633,7 @@ const DictWorkWindow = () => {
                   Отличная работа!
                 </Typography>
                 <Typography sx={{ color: tokens.colors.text.secondary, fontSize: '1.05rem', maxWidth: 440, mx: 'auto' }}>
-                  Вы повторили все {totalCount} слов в разделе «{title}». Регулярные повторения гарантируют быстрый результат!
+                  Вы повторили все {totalCount/2} слов в разделе «{title}». Регулярные повторения гарантируют быстрый результат!
                 </Typography>
               </Box>
             )}

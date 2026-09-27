@@ -50,19 +50,19 @@ const steps = [
     number: '01',
     icon: <PlayArrowRoundedIcon />,
     title: 'Вспомни',
-    description: 'Нажми START. Увидишь английское слово, произнеси его вслух. Вспомни перевод.',
+    description: 'Нажми Start. Увидишь английское слово, произнеси его вслух. Вспомни перевод.',
   },
   {
     number: '02',
     icon: <TranslateIcon />,
     title: 'Проверь',
-    description: 'Нажми TRANSLATE и проверь себя. Повтори английское слово вслух.',
+    description: 'Нажми Translate и проверь себя. Повтори английское слово вслух.',
   },
   {
     number: '03',
     icon: <CheckCircleIcon />,
     title: 'Повтори',
-    description: 'Нажми NEXT и переходи дальше. Не задерживайся на одном слове.',
+    description: 'Нажми Next и переходи дальше. Не задерживайся на одном слове.',
   },
 ];
 
