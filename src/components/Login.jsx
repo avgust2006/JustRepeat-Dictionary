@@ -361,8 +361,8 @@ const Login = () => {
           <Box direction={{ xs: 'column', sm: 'row' }} alignItems="center" justifyContent="space-between" spacing={1.5}>
             <Typography variant="body2" sx={{ color: colors.muted, textAlign: 'center' }}>
               © {new Date().getFullYear()} Just Repeat. Все права защищены. По вопросам технической поддержки и оплаты:{' '}
-              <Link color="inherit" href="mailto:support.justrepeat@gmail.com" sx={{ fontWeight: 'bold' }}>
-                support.justrepeat@gmail.com
+              <Link color="inherit" href="mailto:avgust2006@rambler.ru" sx={{ fontWeight: 'bold' }}>
+                avgust2006@rambler.ru
               </Link>
             </Typography>
           </Box>
