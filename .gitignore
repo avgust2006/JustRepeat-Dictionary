@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ignore ephemeral/dev files\ndev-server.pid
+
+# Ignore ephemeral/dev files\nstop-dev.ps1
+
+# Ignore ephemeral/dev files\n*.pid
