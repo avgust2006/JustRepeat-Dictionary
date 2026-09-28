@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { Analytics } from '@vercel/analytics/react';
 import Login from './components/Login.jsx';
 import Home from './components/Home.jsx';
 import DictWorkWindow from './components/DictWorkWindow.jsx';
@@ -113,6 +114,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
+      <Analytics />
     </ThemeProvider>
   );
 }
