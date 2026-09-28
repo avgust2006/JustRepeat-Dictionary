@@ -28,3 +28,5 @@ dist-ssr
 # Ignore ephemeral/dev files\nstop-dev.ps1
 
 # Ignore ephemeral/dev files\n*.pid
+.vercel
+.env*
