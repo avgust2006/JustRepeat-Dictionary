@@ -155,7 +155,8 @@ const DictWorkWindow = () => {
 
   const encodedTitle = useMemo(() => {
     if (!title) return '';
-    return encodeURIComponent(title).replace(/%2B/g, '+');
+    // '+' in a URL path breaks percent-encoded (Cyrillic) file requests on some hosts; use the '_PLUS' mirror folder
+    return encodeURIComponent(title.replace(/\+/g, '_PLUS'));
   }, [title]);
 
   const [sessionStatus, setSessionStatus] = useState(() => (!title ? 'not_found' : 'loading')); // 'loading' | 'error' | 'empty' | 'not_found' | 'idle' | 'active' | 'completed'

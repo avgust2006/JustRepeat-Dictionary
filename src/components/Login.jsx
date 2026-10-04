@@ -360,7 +360,7 @@ const Login = () => {
           <Divider sx={{ mt: { xs: 5, md: 6 }, mb: 2.5, borderColor: 'rgba(18, 59, 77, 0.12)' }} />
           <Box direction={{ xs: 'column', sm: 'row' }} alignItems="center" justifyContent="space-between" spacing={1.5}>
             <Typography variant="body2" sx={{ color: colors.muted, textAlign: 'center' }}>
-              © {new Date().getFullYear()} Just Repeat. Все права защищены. По вопросам технической поддержки и оплаты:{' '}
+              © {new Date().getFullYear()} Just Repeat. Все права защищены. По вопросам технической поддержки:{' '}
               <Link color="inherit" href="mailto:avgust2006@rambler.ru" sx={{ fontWeight: 'bold' }}>
                 avgust2006@rambler.ru
               </Link>
